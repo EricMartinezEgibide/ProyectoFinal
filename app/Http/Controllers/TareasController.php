@@ -19,7 +19,7 @@ class TareasController extends Controller
     {
 
 
-        $listaTareas = Tarea::where('proyecto_id',$_COOKIE['idProyecto'])->paginate(5);
+        $listaTareas = Tarea::where('proyecto_id',$_COOKIE['idProyecto'])->orderBy('id','desc')->paginate(5);
 
         foreach ($listaTareas as $tarea){
 
@@ -163,7 +163,7 @@ class TareasController extends Controller
 
         $tarea->save();
 
-        return redirect()->route('mostrarTareas');
+        return redirect()->back();
 
     }
 }
