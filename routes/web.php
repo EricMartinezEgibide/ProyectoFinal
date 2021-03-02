@@ -62,3 +62,5 @@ Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
 Route::post('/endTarea','TareasController@endTarea')->name('endTarea');
 Route::post("/comprobarParticipante", "TareasController@ajax")->name("comprobarParticipante");
 
+//Estadísticas
+Route::get("/proyectos", "ProyectoController@estadisticas")->name("estadisticas");
