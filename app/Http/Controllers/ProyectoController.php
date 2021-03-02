@@ -224,6 +224,8 @@ class ProyectoController extends Controller
         $listaArchivos = Multimedia::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
 
         //ESTADO TAREAS
+        $tareasAcabadas = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 1);
+        $tareasEnProgreso = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 0);
 
 
         //ABRIR VIEW
@@ -231,7 +233,9 @@ class ProyectoController extends Controller
             "listaUsuarios" => $listaUsuarios,
             "listaComentarios" => $listaComentarios,
             "listaArchivos" => $listaArchivos,
-            "listaTareas" => $listaTareas
+            "listaTareas" => $listaTareas,
+            "tareasAcabadas" => $tareasAcabadas,
+            "tareasEnProgreso" => $tareasEnProgreso
         ]);
     }
 }

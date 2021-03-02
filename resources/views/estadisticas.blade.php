@@ -4,7 +4,9 @@
     <div class="container-fluid">
         <h1 class="mt-4">Charts</h1>
 
-
+        <input type="hidden" id="tareasTotales" value="{{sizeof($listaTareas)}}">
+        <input type="hidden" id="tareasAcabadas" value="{{sizeof($tareasAcabadas)}}">
+        <input type="hidden" id="tareasEnProgreso" value="{{sizeof($tareasEnProgreso)}}">
 
 
 
@@ -122,7 +124,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-chart-pie mr-1"></i>
-                        Pie Chart Example
+                        Tareas - En progreso / Finalizadas
                     </div>
                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
