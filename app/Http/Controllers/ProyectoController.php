@@ -227,6 +227,30 @@ class ProyectoController extends Controller
         $tareasAcabadas = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 1);
         $tareasEnProgreso = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 0);
 
+        //TAREAS POR USUARIO
+
+        $tareasUsuarios = Tareas_usuarios::get();
+
+        $tareasPorUsuario = array();
+
+        foreach ($listaUsuarios as $usuario){
+            $x = 0;
+            foreach ($listaTareas as $tarea){
+
+                foreach ($tareasUsuarios as $tareaUsuario){
+
+                    if($tareaUsuario->usuario_id == $usuario->id && $tareaUsuario->tarea_id == $tarea->id){
+                        $x++;
+                    }
+
+                }
+
+            }
+
+            $datosUsuario = [$usuario->name, $x];
+            array_push($tareasPorUsuario, $datosUsuario);
+        }
+
 
         //ABRIR VIEW
         return view("estadisticas", [
@@ -235,7 +259,8 @@ class ProyectoController extends Controller
             "listaArchivos" => $listaArchivos,
             "listaTareas" => $listaTareas,
             "tareasAcabadas" => $tareasAcabadas,
-            "tareasEnProgreso" => $tareasEnProgreso
+            "tareasEnProgreso" => $tareasEnProgreso,
+            "tareasPorUsuario" => $tareasPorUsuario
         ]);
     }
 }
