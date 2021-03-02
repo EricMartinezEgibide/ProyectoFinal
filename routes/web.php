@@ -34,6 +34,7 @@ Route::post("/aceptarProyecto", "ProyectoController@aceptarProyecto")->name("ace
 Route::post("/rechazarProyecto", "ProyectoController@rechazarProyecto")->name("rechazarProyecto");
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
+Route::get('/proyecto/eliminar/{id}','ProyectoController@destroy')->name('eliminarProyecto');
 
 
 //MENSAJES
@@ -58,3 +59,8 @@ Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multime
 Route::get('/tareas','TareasController@index')->name('mostrarTareas');
 Route::post('/crearTareas','TareasController@store')->name('crearTareas');
 Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
+Route::post('/endTarea','TareasController@endTarea')->name('endTarea');
+Route::post("/comprobarParticipante", "TareasController@ajax")->name("comprobarParticipante");
+
+//Estadísticas
+Route::get("/proyectos", "ProyectoController@estadisticas")->name("estadisticas");

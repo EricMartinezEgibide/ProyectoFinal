@@ -1,19 +1,73 @@
+label{
+    margin-bottom: 0px;
+}
+
+.divIntroducirTexto{
+    background-color: #f0f0f0;
+    border-radius: 0px;
+}
+
+.zonaMensaje{
+    border-radius: 100px 0px 0px 100px;
+    background-color: white;
+    padding-left: 20px;
+}
+
+.btnEnviar{
+    border-radius: 0px 100px 100px 0px;
+}
+
+.autor{
+    font-size: 14px;
+    font-weight: bold;
+    color: dodgerblue;
+}
+
+.fecha{
+    font-size: 12px;
+}
+
+.mensajeRecibido{
+    background-color: white;
+    border-radius: 0px 10px 10px 10px;
+}
+
+.mensajeEnviado{
+    background-color: #e1ffc7;
+    border-radius: 10px 0px 10px 10px;
+}
+
+.divMensaje{
+    box-shadow: 5px 4px 5px #888888;
+    color: #000;
+    clear: both;
+    line-height: 15px;
+    font-size: 17px;
+    padding: 8px;
+    position: relative;
+    margin: 8px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+.divMensaje:after {
+    border-width: 0px 0 10px 10px;
+    border-color: transparent transparent transparent #e1ffc7;
+    top: 0;
+    right: -10px;
+}
+
+
 body{
 
     nav {
         border-bottom: 1px solid lightgray;
     }
 
-
-
-
     ::placeholder {
         color: black;
         font-size: 1em;
     }
-
-
-
 
     textarea{outline:0;
         padding: 1px;
@@ -27,7 +81,6 @@ body{
     #over2{height: 85%;}
     #over2+div{height: 15%;}
 
-    #over2 span {color: red;}
 
 
     #over{height: 80%;
@@ -42,6 +95,8 @@ body{
     #descripcion{height:auto !important;}
     #descripcion button{height:50px;
                         width: 50%;}
+
+    .btnEnviar{width: 50% !important;}
 
 }
 
@@ -61,6 +116,7 @@ body{
 
     #over2{height: 90% !important;}
     #over2+div{height: 10% !important;}
+    .btnEnviar{width: 100% !important;}
 
 }
 

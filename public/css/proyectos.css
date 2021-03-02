@@ -1,5 +1,72 @@
+label {
+  margin-bottom: 0px;
+}
+
+.divIntroducirTexto {
+  background-color: #f0f0f0;
+  border-radius: 0px;
+}
+
+.zonaMensaje {
+  border-radius: 100px 0px 0px 100px;
+  background-color: white;
+  padding-left: 20px;
+}
+
+.btnEnviar {
+  border-radius: 0px 100px 100px 0px;
+}
+
+.autor {
+  font-size: 14px;
+  font-weight: bold;
+  color: dodgerblue;
+}
+
+.fecha {
+  font-size: 12px;
+}
+
+.mensajeRecibido {
+  background-color: white;
+  border-radius: 0px 10px 10px 10px;
+}
+
+.mensajeEnviado {
+  background-color: #e1ffc7;
+  border-radius: 10px 0px 10px 10px;
+}
+
+.divMensaje {
+  box-shadow: 5px 4px 5px #888888;
+  color: #000;
+  clear: both;
+  line-height: 15px;
+  font-size: 17px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.divMensaje:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #e1ffc7;
+  top: 0;
+  right: -10px;
+}
+
 body nav {
   border-bottom: 1px solid lightgray;
+}
+body ::-moz-placeholder {
+  color: black;
+  font-size: 1em;
+}
+body :-ms-input-placeholder {
+  color: black;
+  font-size: 1em;
 }
 body ::placeholder {
   color: black;
@@ -21,9 +88,6 @@ body #over2 {
 body #over2 + div {
   height: 15%;
 }
-body #over2 span {
-  color: red;
-}
 body #over {
   height: 80%;
 }
@@ -32,7 +96,8 @@ body #btn {
   height: 52px;
 }
 body form {
-  margin-block-end: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 body #titulospan {
   font-size: 1em;
@@ -43,6 +108,9 @@ body #descripcion {
 body #descripcion button {
   height: 50px;
   width: 50%;
+}
+body .btnEnviar {
+  width: 50% !important;
 }
 
 @media (min-width: 768px) {
@@ -79,6 +147,8 @@ body #descripcion button {
   #over2 + div {
     height: 10% !important;
   }
-}
 
-/*# sourceMappingURL=proyectos.css.map */
+  .btnEnviar {
+    width: 100% !important;
+  }
+}

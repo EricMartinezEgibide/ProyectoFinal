@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    </head>
+
     <!-- TABLA CON TODOS LOS USUARIOS -->
     <div class="d-flex flex-column align-items-center w-100">
         <p class="h3">Lista de participantes</p>
@@ -34,7 +38,7 @@
                         <td>{{$usuario->email}}</td>
                         @if($propietario->id == Auth::user()->id)
                             @if($usuario->id == $propietario->id)
-                                <td><input type="submit" class="btn btn-dark" value="Eliminar" disabled></td>
+                                <td><input type="submit" class="btn btn-dark" value="Propietario" disabled></td>
                             @else
                                 <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
                             @endif
@@ -66,24 +70,47 @@
                     </div>
 
 
-                    <form id="formProyecto" method="post" action="{{route("AnadirUsuarioProyecto")}}">
-                        @csrf
-                        <div class="modal-body">
-                            <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
-                            <div class="form-group d-flex">
-                                <input type="email" name="email" class="form-control" id="titulo" placeholder="antonio@siwo.com">
-                                <input type="submit" class="btn btn-dark ml-2" value="Enviar invitación">
-                            </div>
+                    <div class="modal-body">
+                        <!--FORMULARIO PARA AÑADIR USUARIOS-->
+                        <div class="form-group d-flex">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="antonio@siwo.com">
+                            <button class="btn btn-dark ml-2" onclick="comprobarEmail()">Invitar</button>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
 
                 </div>
             </div>
         </div>
 
     </div>
+
+    <script>
+        function comprobarEmail(){
+
+            let _token   = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "/comprobarEmail",
+                type:"POST",
+                data:{
+                    _token: _token,
+                    email: $("#email").val(),
+                },
+                success:function(response){
+                    if(response == "0"){
+                        alert("No existen usuarios con ese correo.");
+                    }else{
+                        alert("Invitación enviada correctamente.");
+                        $("#email").val("");
+                    }
+                },
+            });
+
+        }
+    </script>
 
 @endsection

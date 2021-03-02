@@ -12,10 +12,50 @@
 </head>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script
 <script src="/js/editarPerfil.js"></script>
 <script src="/js/validaciones.js"></script>
 <script src="/js/proj-js/accordeon.js"></script>
+<script>
+    var idT;
+    $('.modal').on('shown.bs.modal', function (e) {
+        idT = this.id;
+    });
+
+
+
+
+    function comprobarName(){
+
+
+        let idTarea = idT.substr(5);
+
+        let s = "select"+idTarea
+
+
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: "/comprobarParticipante",
+            type:"POST",
+            data:{
+                _token: _token,
+                id:$('select[id='+s+']').val(),
+                idT:idTarea
+            },
+            success:function(response){
+                if(response == "0"){
+                    alert("Ya se encuentra añadido a la tarea.");
+                }else{
+                    alert("Se añadió correctamente al usuario.");
+                    location.reload();
+
+                }
+            },
+        });
+
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/js/proj-js/scripts.js"></script>
@@ -27,3 +67,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 <script src="/js/proj-js/demo/datatables-demo.js"></script>
 <script src="/js/multimedia.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="js/estadisticas/chart-area-demo.js"></script>
+<script src="js/estadisticas/chart-bar-demo.js"></script>
+<script src="js/estadisticas/chart-pie-demo.js"></script>

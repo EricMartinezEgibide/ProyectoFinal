@@ -10,6 +10,7 @@
     </a>
 
     <a class="navbar-brand" href="#" data-toggle="modal" data-target="#perfil">
+        <label class="mr-2">Hola, {{Auth::user()["nombre"]}}</label>
         <img style="max-height: 40px" src="images/userDefault.png">
     </a>
 

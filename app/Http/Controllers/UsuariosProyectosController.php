@@ -35,17 +35,7 @@ class UsuariosProyectosController extends Controller
 
     public function store()
     {
-        $usuario = User::get()->where("email", request("email"))->first();
 
-        $usuarioProyecto = new usuarios_proyectos([
-            "usuario_id" => $usuario->id,
-            "proyecto_id" => $_COOKIE["idProyecto"],
-            "estado" => 0
-            ]);
-
-        $usuarioProyecto->save();
-
-        return redirect()->route("UsuariosProyectos");
 
     }
 
@@ -76,14 +66,26 @@ class UsuariosProyectosController extends Controller
     }
 
     public function comprobarEmail(){
-
-        $usuario = User::get()->where("email", request("email"));
+        $usuario = User::get()->where("email", request("email"))->first();
 
         if($usuario == null){
-            return "no existe";
+            return "0";
         }else{
-            return "si existe";
+
+            $usuario = User::get()->where("email", request("email"))->first();
+
+            $usuarioProyecto = new usuarios_proyectos([
+                "usuario_id" => $usuario->id,
+                "proyecto_id" => $_COOKIE["idProyecto"],
+                "estado" => 0
+            ]);
+
+            $usuarioProyecto->save();
+
+            return "1";
         }
+
+
 
     }
 }

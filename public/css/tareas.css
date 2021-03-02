@@ -2,6 +2,8 @@
   width: 100% !important;
   margin-bottom: 10px;
   border: 1px solid black;
+  font-weight: bold;
+  box-shadow: 5px 4px 5px #888888;
 }
 
 @media (min-width: 768px) {

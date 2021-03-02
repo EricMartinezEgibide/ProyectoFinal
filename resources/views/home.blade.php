@@ -85,7 +85,7 @@
                     <tr>
                         <input type="hidden" name="id" value="">
                         <th scope="row">{{$x++}}</th>
-                        <td>NO HAY TAREAS</td>
+                        <td>SIN NOTIFICACIONES</td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -136,7 +136,7 @@
                     <tr>
                         <input type="hidden" name="id" value="">
                         <th scope="row">{{$z++}}</th>
-                        <td>NO HAY TAREAS</td>
+                        <td>SIN NOTIFICACIONES</td>
                         <td></td>
                         <td></td>
                     </tr>

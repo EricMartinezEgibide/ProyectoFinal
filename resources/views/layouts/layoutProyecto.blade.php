@@ -18,14 +18,13 @@
     </a>
 
 
-    <div>
-
-
-        <a class="text-dark" href="#" data-toggle="modal" data-target="#perfil">
+    <div class="d-flex flex-nowrap">
+        <a class="navbar-brand d-flex" href="#" data-toggle="modal" data-target="#perfil">
+            <label class="mr-2 d-none d-md-block">Hola, {{Auth::user()["nombre"]}}</label>
             <img style="max-height: 40px" src="/images/userDefault.png">
-
         </a>
-        <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
+        <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
         </button>
     </div>
 
@@ -116,7 +115,7 @@
                         Participantes
                     </a>
 
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('estadisticas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-align-left"></i>
                         </div>
@@ -186,4 +185,3 @@
 
 
 </body>
-

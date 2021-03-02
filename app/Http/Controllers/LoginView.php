@@ -12,12 +12,18 @@ class LoginView extends Controller
 {
     public function index( Request $request)
     {
+
+        setcookie("idProyecto",'dato',time()+31556926 ,'/');
+
+
        if (empty(Auth::user()))
            {
                return view('auth.login');
            }
 
         Auth::logout();
+
+
 
         $request->session()->invalidate();
 

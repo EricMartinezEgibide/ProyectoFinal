@@ -12,9 +12,19 @@
         <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
         <span id="titulospan" class="mb-3 text-light text-uppercase">informacion del proyecto</span>
 
-        <button type="button" class="btn text-uppercase btnEnviar btn-danger" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn text-uppercase btnEnviar btn-success" data-toggle="modal" data-target="#exampleModal">
             Informacion
         </button>
+
+       @if($proyecto->usuario_id==auth()->user()->id)
+           <button type="button" class=" mt-3 btn text-uppercase btnEnviar btn-danger" onclick="location.href='/proyecto/eliminar/{{$proyecto->id}}'">
+               Eliminar
+           </button>
+       @endif
+
+
+
+
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -34,7 +44,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary text-uppercase" data-dismiss="modal">cerrar</button>
+                                <button type="button"  class="btn btn-secondary text-uppercase " data-dismiss="modal">cerrar</button>
                             </div>
                     </div>
 
@@ -48,30 +58,24 @@
 
     <div id='over' class="bg-dark order-1 order-md-0 p-2 border border-4 rounded    d-flex flex-column   ">
 
-        <div id="over2" class="d-flex flex-column bg-light align-items-start p-2   overflow-auto border">
+        <div id="over2" class="d-flex flex-column bg-light align-items-start justify-content-end p-2 overflow-auto border">
 
             @forelse($mensajes as $mensaje)
                 @if($mensaje->datosAutor['name']==auth()->user()->name)
 
-                <div class="  w-100 d-flex flex-column   justify-content-center">
-
-                    <div id="mensaje" class=" w-75 bg-light border border-4 mt-4 p-3 border-dark rounded-right align-self-end ">
-                        <p class=" text-dark text-break font-italic">{{$mensaje->texto}}</p>
-                    </div>
-                    <div class="d-flex ml-2   align-self-center ">
-                        <p class="mr-1 ">{{$mensaje->datosAutor['name']}} </p><p>|</p> <span class="ml-1">{{$mensaje->created_at}}</span>
-
+                <div class="divMensaje mensajeEnviado divMensaje d-flex flex-column align-items-start justify-content-center align-self-end">
+                    <p class="autor">{{$mensaje->datosAutor['name']}} </p>
+                    <div id="mensaje" class="w-100 d-flex align-self-end justify-content-between">
+                        <label class="">{{$mensaje->texto}}</label>
+                        <label class="fecha ml-5">{{$mensaje->created_at}}</label>
                     </div>
                 </div>
                 @else
-                    <div class=" w-100 d-flex flex-column justify-content-center mb-2">
-
-                        <div class="  w-75 bg-light mt-4 border border-4 p-3 border-dark rounded-right align-self-start ">
-                            <p class=" text-dark text-break font-italic">{{$mensaje->texto}}</p>
-                        </div>
-                        <div class="d-flex ml-2 ">
-                            <p class="mr-1 ">{{$mensaje->datosAutor['name']}} </p><p>|</p> <span class="ml-1">{{$mensaje->created_at}}</span>
-
+                    <div class="divMensaje mensajeRecibido divMensaje d-flex flex-column align-items-start justify-content-center align-self-start">
+                        <p class="autor">{{$mensaje->datosAutor['name']}} </p>
+                        <div id="mensaje" class="w-100 d-flex align-self-end justify-content-between">
+                            <label class="">{{$mensaje->texto}}</label>
+                            <label class="fecha ml-5">{{$mensaje->created_at}}</label>
                         </div>
                     </div>
 
@@ -88,12 +92,10 @@
 
             <form    method="post" action="{{route('crearComentario')}}" onsubmit="return validarComentario()">
                 @csrf
-                <div class="d-flex justify-content-center  align-items-center h-100">
+                <div class="divIntroducirTexto d-flex justify-content-center align-items-center h-100">
                     <input type="hidden" value="{{$proyecto->id}}" name="idP">
-                    <textarea id="textarea" name="mensaje" placeholder="Escribe tu mensaje"class="rounded    overflow-hidden "></textarea>
-                    <button  id="btn" class="btn  btn-dark">Enviar
-                    </button>
-
+                    <textarea id="textarea" name="mensaje" placeholder="Escribe tu mensaje"class="zonaMensaje overflow-hidden"></textarea>
+                    <button  id="btn" class="btnEnviar btn-secondary">Enviar</button>
                 </div>
 
             </form>
