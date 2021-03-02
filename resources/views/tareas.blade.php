@@ -354,7 +354,7 @@
 
 
       </div>
-      <div class="d-flex w-100 mb-4  mt-4 justify-content-end border-bottom border-dark">
+      <div class="d-flex w-100 mb-4  mt-4 justify-content-end border-bottom border-secondary ">
 
           {{ $listatareas->links('pagination::bootstrap-4') }}
 
