@@ -17,13 +17,13 @@ for (let i = 0; i < datos.length; i++) {
 let maxValue = Math.max.apply(null, numeros);
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+var ctx = document.getElementById("grafica");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: nombres,
     datasets: [{
-      label: "Revenue",
+      label: "Tareas",
       backgroundColor: "#3d3d3d",
       borderColor: "#000000",
       data: numeros,

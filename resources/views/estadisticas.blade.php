@@ -112,7 +112,9 @@
                         <i class="fas fa-chart-bar mr-1"></i>
                         Tareas por usuario
                     </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+                    <div class="card-body">
+                        <canvas id="grafica" width="100%" height="50"></canvas>
+                    </div>
                 </div>
             </div>
 
