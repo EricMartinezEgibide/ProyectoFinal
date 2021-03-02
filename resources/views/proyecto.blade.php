@@ -58,7 +58,7 @@
 
     <div id='over' class="bg-dark order-1 order-md-0 p-2 border border-4 rounded    d-flex flex-column   ">
 
-        <div id="over2" class="d-flex flex-column bg-light align-items-start justify-content-end p-2   overflow-auto border">
+        <div id="over2" class="d-flex flex-column bg-light align-items-start justify-content-end p-2 overflow-auto border">
 
             @forelse($mensajes as $mensaje)
                 @if($mensaje->datosAutor['name']==auth()->user()->name)
