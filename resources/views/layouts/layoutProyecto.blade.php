@@ -115,7 +115,7 @@
                         Participantes
                     </a>
 
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('estadisticas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-align-left"></i>
                         </div>
@@ -185,4 +185,3 @@
 
 
 </body>
-
