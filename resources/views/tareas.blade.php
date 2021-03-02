@@ -189,8 +189,9 @@
                               <form action="{{route('endTarea')}}" method="POST">
                                   @csrf
                                   <input type="hidden" name="idT" value="{{$tarea->id}}">
+                                  @if(auth()->user()->id==$tarea->datosAutor['id'])
                                   <button  class="btn  ml-1 btn-danger">finalizar</button>
-
+                                  @endif
                               </form>
 
                           </div>
