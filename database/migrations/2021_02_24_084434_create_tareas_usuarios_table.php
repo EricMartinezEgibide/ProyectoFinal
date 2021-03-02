@@ -18,7 +18,6 @@ class CreateTareasUsuariosTable extends Migration
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('tarea_id');
             $table->foreign('tarea_id')->references('id')->on('tareas')->onDelete('cascade');
-            $table->integer('estado');
             $table->timestamps();
         });
     }

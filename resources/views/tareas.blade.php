@@ -64,7 +64,7 @@
                   <div id="t{{$tarea->id}}" class="accordion-collapse  rounded collapse" aria-labelledby="tarea{{$tarea->id}}" data-bs-parent="#contenedorTareas">
                       <div class="accordion-body w-100 d-flex flex-wrap p-2">
 
-                          <div class="w-50">
+                          <div class="w-50 d-flex flex-column align-items-start align-items-md-center">
                               @if($tarea->estado==0)
                                   <div class="">
                                       <p><strong>Estado</strong>:<strong class="text-success">En proceso</strong></p>
@@ -96,8 +96,12 @@
 
 
                           <div class="w-100 mt-3 mb-3">
+                              <div class="w-50 d-flex flex-column align-items-start align-items-md-center">
+
+
                               <P class="mb-1">Descripcion: </P>
                               <span class="mt-0 mb-4 border-dark rounded">{{$tarea->descripcion}}</span>
+                              </div>
 
                           </div>
 
@@ -185,8 +189,9 @@
                               <form action="{{route('endTarea')}}" method="POST">
                                   @csrf
                                   <input type="hidden" name="idT" value="{{$tarea->id}}">
+                                  @if(auth()->user()->id==$tarea->datosAutor['id'])
                                   <button  class="btn  ml-1 btn-danger">finalizar</button>
-
+                                  @endif
                               </form>
 
                           </div>
@@ -210,7 +215,7 @@
           <div id="t{{$tarea->id}}" class="accordion-collapse  rounded collapse" aria-labelledby="tarea{{$tarea->id}}" data-bs-parent="#contenedorTareas">
               <div class="accordion-body w-100 d-flex flex-wrap p-2">
 
-                  <div class="w-50">
+                  <div class="w-50 d-flex flex-column align-items-start align-items-md-center">
                       @if($tarea->estado==0)
                           <div class="">
                               <p><strong>Estado</strong>:<strong class="text-success">En proceso</strong></p>
@@ -242,8 +247,11 @@
 
 
                   <div class="w-100 mt-3 mb-3">
+                      <div class="w-50 d-flex flex-column align-items-start align-items-md-center">
+
                       <P class="mb-1"><strong>Descripcion:</strong> </P>
                       <span class="mt-0 mb-4 border-dark rounded">{{$tarea->descripcion}}</span>
+                      </div>
 
                   </div>
 
@@ -346,7 +354,7 @@
 
 
       </div>
-      <div class="d-flex w-100 justify-content-end border-bottom border-dark">
+      <div class="d-flex w-100 mb-4  mt-4 justify-content-end border-bottom border-secondary ">
 
           {{ $listatareas->links('pagination::bootstrap-4') }}
 
