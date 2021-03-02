@@ -189,8 +189,9 @@
                               <form action="{{route('endTarea')}}" method="POST">
                                   @csrf
                                   <input type="hidden" name="idT" value="{{$tarea->id}}">
+                                  @if(auth()->user()->id==$tarea->datosAutor['id'])
                                   <button  class="btn  ml-1 btn-danger">finalizar</button>
-
+                                  @endif
                               </form>
 
                           </div>
@@ -353,7 +354,7 @@
 
 
       </div>
-      <div class="d-flex w-100 mb-4  mt-4 justify-content-end border-bottom border-dark">
+      <div class="d-flex w-100 mb-4  mt-4 justify-content-end border-bottom border-secondary ">
 
           {{ $listatareas->links('pagination::bootstrap-4') }}
 
