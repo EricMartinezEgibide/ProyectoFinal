@@ -41,10 +41,10 @@ Route::get('/proyecto/eliminar/{id}','ProyectoController@destroy')->name('elimin
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
 
 //UsuariosProyectos
-Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
-Route::post("/AnadirUsuarioProyecto", "usuariosProyectosController@store")->name("AnadirUsuarioProyecto");
-Route::post("/comprobarEmail", "usuariosProyectosController@comprobarEmail")->name("comprobarEmail");
-Route::post("/eliminarUsuarioProyecto", "usuariosProyectosController@destroy")->name("eliminarUsuarioProyecto");
+Route::get("/listaDeUsuarios", "UsuariosProyectosController@index")->name("UsuariosProyectos");
+Route::post("/AnadirUsuarioProyecto", "UsuariosProyectosController@store")->name("AnadirUsuarioProyecto");
+Route::post("/comprobarEmail", "UsuariosProyectosController@comprobarEmail")->name("comprobarEmail");
+Route::post("/eliminarUsuarioProyecto", "UsuariosProyectosController@destroy")->name("eliminarUsuarioProyecto");
 
 
 //ARCHIVOS
@@ -62,3 +62,5 @@ Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
 Route::post('/endTarea','TareasController@endTarea')->name('endTarea');
 Route::post("/comprobarParticipante", "TareasController@ajax")->name("comprobarParticipante");
 
+//Estadísticas
+Route::get("/proyectos", "ProyectoController@estadisticas")->name("estadisticas");

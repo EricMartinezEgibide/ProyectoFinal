@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mensaje;
+use App\Models\Multimedia;
 use App\Models\Proyecto;
 
+use App\Models\Tarea;
+use App\Models\Tareas_usuarios;
 use App\Models\User;
 use App\Models\usuarios_proyectos;
 use Illuminate\Http\Request;
@@ -68,6 +71,13 @@ class ProyectoController extends Controller
     {
 
         $usuario = Auth::user();
+
+        request()->validate([
+            'titulo'=>'required',
+            'descripcion'=>'required',
+
+        ]);
+
 
         $proyecto = new Proyecto([
             "titulo" => request("titulo"),
@@ -199,5 +209,65 @@ class ProyectoController extends Controller
         DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->delete();
 
         return redirect()->route("home");
+    }
+
+    public function estadisticas(){
+
+        //Tratar usuarios
+        $usuariosProyectos = usuarios_proyectos::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 1);
+        $listaUsuarios = array();
+
+        foreach ($usuariosProyectos as $usuarioProyecto){
+            array_push($listaUsuarios, User::get()->where("id", $usuarioProyecto->usuario_id)->first());
+        }
+
+        //Tratar comentarios
+        $listaComentarios = Mensaje::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
+
+        //Tratar tareas
+        $listaTareas = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
+
+        //Tratar archivos
+        $listaArchivos = Multimedia::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
+
+        //ESTADO TAREAS
+        $tareasAcabadas = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 1);
+        $tareasEnProgreso = Tarea::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 0);
+
+        //TAREAS POR USUARIO
+
+        $tareasUsuarios = Tareas_usuarios::get();
+
+        $tareasPorUsuario = array();
+
+        foreach ($listaUsuarios as $usuario){
+            $x = 0;
+            foreach ($listaTareas as $tarea){
+
+                foreach ($tareasUsuarios as $tareaUsuario){
+
+                    if($tareaUsuario->usuario_id == $usuario->id && $tareaUsuario->tarea_id == $tarea->id){
+                        $x++;
+                    }
+
+                }
+
+            }
+
+            $datosUsuario = [$usuario->name, $x];
+            array_push($tareasPorUsuario, $datosUsuario);
+        }
+
+
+        //ABRIR VIEW
+        return view("estadisticas", [
+            "listaUsuarios" => $listaUsuarios,
+            "listaComentarios" => $listaComentarios,
+            "listaArchivos" => $listaArchivos,
+            "listaTareas" => $listaTareas,
+            "tareasAcabadas" => $tareasAcabadas,
+            "tareasEnProgreso" => $tareasEnProgreso,
+            "tareasPorUsuario" => $tareasPorUsuario
+        ]);
     }
 }
