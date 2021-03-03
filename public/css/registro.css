@@ -2041,22 +2041,12 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-control::-webkit-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
 .form-control::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
-.form-control::-ms-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
@@ -7892,7 +7882,7 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports (position: -webkit-sticky) or (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
     position: -webkit-sticky;
     position: sticky;
@@ -10803,4 +10793,6 @@ body {
   padding-bottom: 0.75rem;
 }
 
+
 /*# sourceMappingURL=registro.css.map */
+
