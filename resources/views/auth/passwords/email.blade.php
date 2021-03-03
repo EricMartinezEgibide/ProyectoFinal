@@ -35,7 +35,7 @@
 
                                         <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase col-12  align-self-center font-weight-bold mb-2" id="b-login1" type="submit">Enviar</button>
                                         <div class="text-center">
-                                            <a  href="/">Login </a>|<a href="/reset"> Registrate</a></div>
+                                            <a  href="/">Login </a>|<a href="/register"> Registrate</a></div>
 
                                 </form>
 

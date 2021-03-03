@@ -2,17 +2,58 @@
 
 @section('content')
 
+
+
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
     </head>
 
     <!-- TABLA CON TODOS LOS USUARIOS -->
-    <div class="d-flex flex-column align-items-center w-100">
-        <p class="h3">Lista de participantes</p>
+    <div class="w-100">
+        <p class="h3 text-center">Lista de participantes</p>
 
 
 
-        <table class="table table-striped">
+        <table class="table table-striped d-md-none ">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th  class="d-none " scope="col">Apellido</th>
+                <th  class="d-none "scope="col">Email</th>
+                @if($propietario->id == Auth::user()->id)
+                    <th scope="col">Acción</th>
+                @endif
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach($listaUsuarios as $usuario)
+
+                <form method="post" action="{{route("eliminarUsuarioProyecto")}}">
+                    @csrf
+                    <tr>
+                        <input type="hidden" name="idUsuario" value="{{$usuario->id}}">
+                        <th scope="row">{{$x++}}</th>
+                        <td>{{$usuario->name}}</td>
+                        <td class="d-none ">{{$usuario->apellidos}}</td>
+                        <td class="d-none ">{{$usuario->email}}</td>
+                        @if($propietario->id == Auth::user()->id)
+                            @if($usuario->id == $propietario->id)
+                                <td><input type="submit" class="btn btn-dark" value="Propietario" disabled></td>
+                            @else
+                                <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                            @endif
+                        @endif
+                    </tr>
+                </form>
+
+            @endforeach
+
+            </tbody>
+        </table>
+
+        <table id="tabla2" class="table table-striped   d-none d-md-table ">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -32,7 +73,7 @@
                     @csrf
                     <tr>
                         <input type="hidden" name="idUsuario" value="{{$usuario->id}}">
-                        <th scope="row">{{$x++}}</th>
+                        <th scope="row">{{$y++}}</th>
                         <td>{{$usuario->name}}</td>
                         <td>{{$usuario->apellidos}}</td>
                         <td>{{$usuario->email}}</td>

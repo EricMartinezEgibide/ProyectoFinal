@@ -25,7 +25,7 @@ class UsuariosProyectosController extends Controller
             array_push($listaUsuarios, User::get()->where("id", $usuarioProyecto->usuario_id)->first());
         }
 
-        return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1, "propietario" => $propietario]);
+        return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1, "y"=>1, "propietario" => $propietario]);
     }
 
     public function create()
