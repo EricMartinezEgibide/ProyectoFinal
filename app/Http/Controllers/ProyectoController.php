@@ -72,6 +72,13 @@ class ProyectoController extends Controller
 
         $usuario = Auth::user();
 
+        request()->validate([
+            'titulo'=>'required',
+            'descripcion'=>'required',
+
+        ]);
+
+
         $proyecto = new Proyecto([
             "titulo" => request("titulo"),
             "descripcion" => request("descripcion"),
