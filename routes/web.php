@@ -51,6 +51,8 @@ Route::post("/eliminarUsuarioProyecto", "UsuariosProyectosController@destroy")->
 Route::get('/archivos','MultimediaController@index')->name('multimedia');
 ////subir archivos
 Route::post('archivos/{proyecto}','MultimediaController@store')->name('multimedia.guardar');
+///comprobar existencia archivos
+Route::post('archivos','MultimediaController@comprobar')->name('multimedia.comprobar');
 
 ////Descargar archivos
 Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multimedia.descargar');

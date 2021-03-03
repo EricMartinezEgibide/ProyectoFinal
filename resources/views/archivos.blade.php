@@ -13,7 +13,7 @@
                     <span id="iconoArchivo" class="fa"></span>
                 </div>
 
-                <button type="submit" class="btn btn-dark" id="subirArchivo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="submit" class="btn btn-dark" id="subirArchivo">
                     Subir arhivo
                 </button>
             </div>
@@ -67,5 +67,7 @@
             @endif
         </div>
     </div>
-
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('#subirArchivo'));
+    </script>
 @endsection

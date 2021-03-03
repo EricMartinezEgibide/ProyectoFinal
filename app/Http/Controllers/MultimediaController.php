@@ -47,4 +47,15 @@ class MultimediaController extends Controller
         $rutaArchivo = Multimedia::find($id)->ruta;
         return Storage::download($rutaArchivo);
     }
+    public function comprobar(){
+        request()->validate(['archivo'=>'']);
+        $nombre = request()->archivo;
+        $ruta= 'public/media/proyectos/'.$_COOKIE['idProyecto'].'/'.$nombre;
+        //buscar si ya existe el archivo
+        $archivo = Multimedia::get()->where('ruta',$ruta)->first();
+        if(empty($archivo)){
+            return 1;
+        }
+        return 0;
+    }
 }
