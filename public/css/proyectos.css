@@ -64,6 +64,14 @@ label {
 body nav {
   border-bottom: 1px solid lightgray;
 }
+body ::-moz-placeholder {
+  color: black;
+  font-size: 1em;
+}
+body :-ms-input-placeholder {
+  color: black;
+  font-size: 1em;
+}
 body ::placeholder {
   color: black;
   font-size: 1em;
@@ -92,7 +100,8 @@ body #btn {
   height: 52px;
 }
 body form {
-  margin-block-end: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 body #titulospan {
   font-size: 1em;
@@ -147,5 +156,3 @@ body .btnEnviar {
     width: 100% !important;
   }
 }
-
-/*# sourceMappingURL=proyectos.css.map */
