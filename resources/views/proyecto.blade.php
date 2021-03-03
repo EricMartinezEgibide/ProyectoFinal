@@ -5,6 +5,11 @@
 
 @section('content')
 
+    <style>
+        footer{
+            display: none;
+        }
+    </style>
 
    <div id="descripcion" class=" p-2  order-0  flow-md-grow-5  order-md-1 bg-secondary  border d-flex  flex-column rounded order-0 order-md-1 align-items-center">
 
@@ -56,9 +61,9 @@
     </div>
 
 
-    <div id='over' class="bg-dark order-1 order-md-0 p-2 border border-4 rounded    d-flex flex-column   ">
+    <div id='over' class=" bg-dark order-1 order-md-0 p-2 border border-4 rounded    d-flex flex-column   ">
 
-        <div id="over2" class="d-flex flex-column bg-light align-items-start justify-content-end p-2   overflow-auto border">
+        <div id="over2" class="d-flex flex-column bg-light align-items-start p-2 border">
 
             @forelse($mensajes as $mensaje)
                 @if($mensaje->datosAutor['name']==auth()->user()->name)
@@ -102,7 +107,5 @@
         </div>
 
     </div>
-
-
 
 @endsection

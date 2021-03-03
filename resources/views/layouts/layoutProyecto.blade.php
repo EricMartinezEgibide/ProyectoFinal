@@ -8,7 +8,7 @@
             crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed vh-100">
 
 
 
@@ -115,7 +115,7 @@
                         Participantes
                     </a>
 
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('estadisticas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-align-left"></i>
                         </div>

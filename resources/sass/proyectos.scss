@@ -57,6 +57,15 @@ label{
     right: -10px;
 }
 
+main{
+}
+
+
+
+#over2{
+    overflow-y: scroll;
+}
+
 
 body{
 
@@ -83,7 +92,8 @@ body{
 
 
 
-    #over{height: 80%;
+    #over{
+        height: 60%;
     }
 
     #btn{max-height: 52px;
@@ -92,7 +102,7 @@ body{
     form{margin-block-end: 0;}
 
     #titulospan{font-size: 1em;}
-    #descripcion{height:auto !important;}
+    #descripcion{height:auto}
     #descripcion button{height:50px;
                         width: 50%;}
 
@@ -107,8 +117,12 @@ body{
     #descripcion{width:30%;}
     #over{width: 70%;
     }
-    #descripcion{height:100% !important;}
-    #over{height: 100% !important;
+    #descripcion{
+        height:100% !important;
+    }
+
+    #over{
+        height: 100% !important;
         color: red;
     }
 
