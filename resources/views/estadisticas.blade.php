@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <h1 class="mt-4">Charts</h1>
+        <h1 class="mt-4">Estadísticas</h1>
 
         <input type="hidden" id="tareasTotales" value="{{sizeof($listaTareas)}}">
         <input type="hidden" id="tareasAcabadas" value="{{sizeof($tareasAcabadas)}}">
