@@ -36,12 +36,12 @@
                                                            name="name" value="{{ old('name') }}"
                                                            required autocomplete="name"/>
                                                     <label class="small mb-1" for="inputNickname">Usuario</label>
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-floating">
@@ -52,12 +52,13 @@
                                                            name="email" value="{{ old('email') }}"
                                                            required autocomplete="email"/>
                                                     <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
@@ -69,12 +70,12 @@
                                                                    placeholder="Teclea tu contraseña" name="password"
                                                                    required autocomplete="new-password"/>
                                                             <label class="small mb-1" for="inputPassword">Contraseña</label>
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
-                                                        @error('password')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

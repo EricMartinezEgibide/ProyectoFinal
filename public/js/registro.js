@@ -3,15 +3,14 @@ $(document).ready(function () {
     var usuario = $('#inputNickname').val().toString();
     var email = $('#inputEmailAddress').val().toString();
     //eliminar del dom bloques antiguos de errores validación
-    $('.invalid-feedback').remove();
-    validarNombre();
-    validarPass();
+    //$('.invalid-feedback').remove();
     //si ocurre algun error evitar el submit:
-    if (error) {
-        $('form').first().on('submit', function (e) {
+    $('form').first().on('submit', function (e) {
+        validarNombre();
+        validarPass();
+        if (error)
             e.preventDefault();
-        });
-    }
+    });
 });
 function addEstiloError(campo, mensaje) {
     campo.addClass('is-invalid');
@@ -36,6 +35,7 @@ function validarNombre() {
                 throw new Error('apellidos');
         inputNombre.removeClass('is-invalid');
         inputApellidos.removeClass('is-invalid');
+        error = false;
     }
     catch (err) {
         error = true;
@@ -58,6 +58,7 @@ function validarPass() {
             if (!patron.test(pass))
                 throw new Error(errMessage);
         inputPass.removeClass('is-invalid');
+        error = false;
     }
     catch (err) {
         error = true;
