@@ -85,7 +85,7 @@
                     <tr>
                         <input type="hidden" name="id" value="">
                         <th scope="row">{{$x++}}</th>
-                        <td>SIN NOTIFICACIONES</td>
+                        <td>SIN PROYECTOS</td>
                         <td></td>
                         <td></td>
                     </tr>
