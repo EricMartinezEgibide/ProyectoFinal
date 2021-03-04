@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container-fluid d-flex flex-column">
+    <main class="container-fluid d-flex flex-column">
 
         <br>
 
@@ -149,6 +149,6 @@
         </div>
 
 
-    </div>
+    </main>
 
 @endsection
